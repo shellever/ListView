@@ -275,9 +275,16 @@ public class UserBean {
 }
 ```
 
-自定义继承自BaseAdapter的数据适配器CustomBaseAdapter
+自定义继承自BaseAdapter的数据适配器 CustomBaseAdapter.java
 
-ListView优化：通过convertView+ViewHolder来实现
+使用继承BaseAdapter的方式可以实现复杂的列表布局，由于BaseAdapter是一个抽象类，必须实现以下四种方法：
+
+public int getCount();
+public Object getItem(int position);
+public long getItemId(int position);
+public View getView(int position, View convertView, ViewGroup parent);
+
+并通过convertView和ViewHolder来实现ListView的优化。
 
 ViewHolder优化BaseAdapter思路：
 
