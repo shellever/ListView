@@ -22,6 +22,8 @@ import java.util.Locale;
 
 public class SearchEditText extends EditText {
 
+    private static boolean DEBUG = false;
+
     private Drawable mSearchDrawable;
     private Drawable mDeleteDrawable;
 
@@ -44,9 +46,12 @@ public class SearchEditText extends EditText {
         int width = (int) (mIntrinsicWidth * 0.8f);     // scale
         int height = (int) (mIntrinsicHeight * 0.8f);   // scale
         mSearchDrawable.setBounds(0, 0, width, height);
-        Locale locale = Locale.getDefault();
-        String info = String.format(locale, "[(%d, %d), (%d, %d)]", mIntrinsicWidth, mIntrinsicHeight, width, height);
-        Toast.makeText(getContext(), info, Toast.LENGTH_SHORT).show();  // (96, 96), (76, 76)
+
+        if(DEBUG) {
+            Locale locale = Locale.getDefault();
+            String info = String.format(locale, "[(%d, %d), (%d, %d)]", mIntrinsicWidth, mIntrinsicHeight, width, height);
+            Toast.makeText(getContext(), info, Toast.LENGTH_SHORT).show();  // (96, 96), (76, 76)
+        }
 
         mDeleteDrawable = getCompoundDrawables()[2];    // left top right bottom
         if (mDeleteDrawable == null) {
@@ -85,7 +90,9 @@ public class SearchEditText extends EditText {
         if (mDeleteDrawable != null && event.getAction() == MotionEvent.ACTION_UP) {
             int left = getWidth() - getPaddingRight() - mDeleteDrawable.getIntrinsicWidth();
             int right = getWidth() - getPaddingRight();
-            Toast.makeText(getContext(), "left, right = " + left + ", " + right, Toast.LENGTH_SHORT).show();
+            if(DEBUG) {
+                Toast.makeText(getContext(), "left, right = " + left + ", " + right, Toast.LENGTH_SHORT).show();
+            }
             if (event.getX() >= left && event.getX() <= right) {
                 this.setText("");
             }

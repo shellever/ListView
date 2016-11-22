@@ -15,6 +15,8 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
+    private static boolean DEBUG = false;
+
     private ListView mContactsLv;
     private IndexSideBar mIndexSideBar;
     private ContactAdapter mContactAdapter;
@@ -71,7 +73,9 @@ public class MainActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 contactsFilter(s.toString());
-//                Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                if (DEBUG) {
+                    Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

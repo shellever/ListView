@@ -18,6 +18,8 @@ import java.util.List;
 
 public class ContactAdapter extends BaseAdapter implements SectionIndexer {
 
+    private static boolean DEBUG = false;
+
     private LayoutInflater inflater;
     private List<ContactInfo> mContactInfoList;
 
@@ -65,7 +67,11 @@ public class ContactAdapter extends BaseAdapter implements SectionIndexer {
             holder.tv_letter.setVisibility(View.GONE);
         }
 
-        holder.tv_name.setText(contactInfo.getRawName() + " -> " + contactInfo.getPinyinName());
+        if (DEBUG) {
+            holder.tv_name.setText(contactInfo.getRawName() + " -> " + contactInfo.getPinyinName());
+        } else {
+            holder.tv_name.setText(contactInfo.getRawName());
+        }
 
         return convertView;
     }
