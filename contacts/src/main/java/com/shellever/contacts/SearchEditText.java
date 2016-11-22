@@ -96,6 +96,7 @@ public class SearchEditText extends EditText {
             if (event.getX() >= left && event.getX() <= right) {
                 this.setText("");
             }
+            // getRawX/getRawY - no right
 //            int eventX = (int) event.getRawX();
 //            int eventY = (int) event.getRawY();
 //            Toast.makeText(getContext(), "eventX, eventY = " + eventX + ", " + eventY, Toast.LENGTH_SHORT).show();

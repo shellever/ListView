@@ -51,7 +51,7 @@ public class IndexSideBar extends View {
         mPaint = new Paint();   // Paint.ANTI_ALIAS_FLAG
         mPaint.setAntiAlias(true);
         mPaint.setTypeface(Typeface.SANS_SERIF);
-        mPaint.setTextSize(DisplayUtils.dp2px(getContext(), 12));  // 12 dp
+        mPaint.setTextSize(DisplayUtils.sp2px(getContext(), 12));  // 12sp // 12dp
 
         setBackgroundColor(Color.alpha(0));
     }

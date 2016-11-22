@@ -15,4 +15,9 @@ public class DisplayUtils {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, dm);
     }
+
+    public static float sp2px(Context context, int sp){
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, dm);
+    }
 }

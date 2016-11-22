@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
         mSearchEt.addTextChangedListener(new SearchEditText.MiddleTextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mContactAdapter.updateContactInfoList(ContactHelper.contactsFilter(s.toString(), mContactInfoList));     // update
+                mContactAdapter.updateContactInfoList(ContactHelper.contactsFilter(s.toString(), mContactInfoList)); // update
                 if (DEBUG) {
                     Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
                 }
@@ -84,9 +84,11 @@ public class MainActivity extends Activity {
         String[] contacts = getResources().getStringArray(R.array.contacts);
         mContactInfoList = ContactHelper.setupContactInfoList(contacts);
 
+        // 设置侧边栏中的字母索引
         List<String> mLetterIndexList = ContactHelper.setupLetterIndexList(mContactInfoList);
         mIndexSideBar.setLetterIndexList(mLetterIndexList, false);
 
+        // 设置联系人列表的信息
         mContactAdapter = new ContactAdapter(this, mContactInfoList);
         mContactsLv.setAdapter(mContactAdapter);
     }
