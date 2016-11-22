@@ -1,0 +1,87 @@
+@startuml
+
+
+class Bean {
+    private String title;
+    private String desc;
+    private String time;
+    private String phone;
+    private boolean isChecked;
+    __
+    ..Constructor ..
+    public Bean();
+    public Bean(String title, String desc, String time, String phone);
+    .. Getter and Setter ..
+    public String getTitle();
+    public void setTitle(String title);
+    public String getDesc();
+    public void setDesc(String desc);
+    public String getTime();
+    public void setTime(String time);
+    public String getPhone();
+    public void setPhone(String phone);
+    public boolean isChecked();
+    public void setChecked(boolean checked);
+    .. toString ..
+    public String toString();
+}
+
+
+class ViewHolder {
+    private SparseArray<View> mViews;
+    private int mPosition;
+    private View mConvertView;
+    __
+    .. Private Constructor ..
+    private ViewHolder(Context context, ViewGroup parent, int layoutId, int position);
+    .. Public Method ..
+    public static ViewHolder get(Context context, View convertView, ViewGroup parent, int layoutId, int position);
+    public View getView(int viewId);
+    public View getConvertView();
+    .. Setter Method ..
+    public ViewHolder setText(int viewId, String text);
+    public ViewHolder setImageResource(int viewId, int resId);
+    public ViewHolder setImageBitmap(int viewId, Bitmap bitmap);
+    public ViewHolder setImageURI(int viewId, Uri uri);
+}
+
+
+abstract class CommonAdapter<T> {
+    protected Context mContext;
+    protected List<T> mDataList;
+    protected LayoutInflater mInflater;
+    protected int mLayoutId;
+    __
+    .. Constructor ..
+    public CommonAdapter(Context context, List<T> dataList, int layoutId);
+    .. BaseAdapter ..
+    public int getCount();
+    public T getItem(int position);
+    public long getItemId(int position);
+    public View getView(int position, View convertView, ViewGroup parent);
+    .. Abstract Method ..
+    public abstract void convert(ViewHolder holder, T t);
+}
+
+BaseAdapter <|-- CommonAdapter : extends
+ViewHolder <.. CommonAdapter : parameterify
+
+
+class CustomCommonAdapter<Bean> {
+    public CustomCommonAdapter(Context context, List<Bean> dataList, int layoutId);
+    public void convert(ViewHolder holder, final Bean bean);
+}
+
+CommonAdapter <|-- CustomCommonAdapter : extends
+Bean <.. CustomCommonAdapter : genericify
+Bean <.. CustomCommonAdapter : parameterify
+
+
+package mViews <<Database>>{
+    class SparseArray<View>
+}
+
+ViewHolder <-- mViews
+
+
+@enduml

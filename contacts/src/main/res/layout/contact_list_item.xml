@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_contact_index_letter"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:background="@color/colorWhiteSmoke"
+        android:gravity="center_vertical"
+        android:paddingEnd="0dp"
+        android:paddingStart="12dp"
+        android:text="@string/text_contact_index_letter"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tv_contact_name"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:gravity="center_vertical"
+        android:paddingEnd="0dp"
+        android:paddingStart="12dp"
+        android:text="@string/text_contact_name"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="12dp"
+        android:background="@color/colorGainsboro" />
+</LinearLayout>

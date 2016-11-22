@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="text_contact_name">库里</string>
+    <string name="text_contact_index_letter">C</string>
+    <string name="text_hint_search">Search</string>
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ListView</string>
+    <string name="text_hello_launcher">Hello Launcher</string>
+    <string name="text_name">name</string>
+    <string name="text_description">description</string>
+    <string name="load">loading…</string>
+    <string name="text_the_news_title">the news title</string>
+    <string name="text_the_news_content">the news content</string>
+</resources>
