@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
+import com.shellever.contacts.bean.ContactInfo;
+
 import java.util.List;
 
 /**

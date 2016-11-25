@@ -1,4 +1,4 @@
-package com.shellever.contacts;
+package com.shellever.contacts.bean;
 
 
 import android.support.annotation.NonNull;

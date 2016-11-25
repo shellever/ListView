@@ -1,4 +1,4 @@
-package com.shellever.contacts;
+package com.shellever.contacts.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

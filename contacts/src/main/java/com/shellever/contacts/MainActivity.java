@@ -2,15 +2,17 @@ package com.shellever.contacts;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import com.shellever.contacts.bean.ContactInfo;
+import com.shellever.contacts.utils.ContactHelper;
+import com.shellever.contacts.view.IndexSideBar;
+import com.shellever.contacts.view.SearchEditText;
+
 import java.util.List;
 
 public class MainActivity extends Activity {
@@ -30,6 +32,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         initViews();
+        initEvents();
+        initContactAdapter();
     }
 
     private void initViews() {
@@ -37,9 +41,6 @@ public class MainActivity extends Activity {
         mLetterDialogTv = (TextView) findViewById(R.id.tv_letter_dialog);
         mIndexSideBar = (IndexSideBar) findViewById(R.id.sb_index_letter);
         mContactsLv = (ListView) findViewById(R.id.lv_contacts);
-
-        initEvents();
-        initContactAdapter();
     }
 
     private void initEvents() {
@@ -72,7 +73,8 @@ public class MainActivity extends Activity {
         mSearchEt.addTextChangedListener(new SearchEditText.MiddleTextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mContactAdapter.updateContactInfoList(ContactHelper.contactsFilter(s.toString(), mContactInfoList)); // update
+                List<ContactInfo> mFilterList = ContactHelper.contactsFilter(s.toString(), mContactInfoList);
+                mContactAdapter.updateContactInfoList(mFilterList); // update
                 if (DEBUG) {
                     Toast.makeText(MainActivity.this, s.toString(), Toast.LENGTH_SHORT).show();
                 }

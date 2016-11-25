@@ -1,4 +1,4 @@
-package com.shellever.contacts;
+package com.shellever.contacts.view;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.shellever.contacts.R;
 
 import java.util.Locale;
 

@@ -20,7 +20,7 @@
             android:textSize="16sp" />
     </RelativeLayout>
 
-    <com.shellever.contacts.SearchEditText
+    <com.shellever.contacts.view.SearchEditText
         android:id="@+id/et_contacts_search"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -57,7 +57,7 @@
             android:visibility="gone"
             tools:visibility="visible" />
 
-        <com.shellever.contacts.IndexSideBar
+        <com.shellever.contacts.view.IndexSideBar
             android:id="@+id/sb_index_letter"
             android:layout_width="24dp"
             android:layout_height="match_parent"
