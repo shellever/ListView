@@ -38,6 +38,7 @@ public class ContactHelper {
         return mFilterList;
     }
 
+    // 创建侧边栏中的字母索引
     public static List<String> setupLetterIndexList(List<ContactInfo> contactInfoList) {
         List<String> mLetterIndexList = new ArrayList<>();
         boolean found = false;
@@ -57,6 +58,7 @@ public class ContactHelper {
         return mLetterIndexList;
     }
 
+    // 创建联系人列表的信息
     public static List<ContactInfo> setupContactInfoList(String[] contacts) {
         List<ContactInfo> results = new ArrayList<>();
         for (String contact : contacts) {
@@ -79,10 +81,10 @@ public class ContactHelper {
 
     // 创建用于排序的字母串：默认返回的字符串全部为大写字母或者#
     // 规则定义：
-    // 汉字开头时，只取第一个开头的汉字拼音；
+    // 汉字开头时，只取第一个汉字的拼音；
     // 英文开头时，只截取从开头到非字母字符之前的字母
     private static String setupSortLetters(String contact) {
-        String firstChar = String.valueOf(contact.charAt(0));
+        String firstChar = String.valueOf(contact.charAt(0));   // 获取第一个字符
         int mode = PinyinUtils.CASE_UPPERCASE | PinyinUtils.TRIM_NON_CHAR;
         String pinyin = PinyinUtils.toPinyinString(firstChar, mode);
         if (!TextUtils.isEmpty(pinyin)) {       // 首个字符是汉字 (简单的爱)

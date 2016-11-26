@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import com.shellever.contacts.R;
 import com.shellever.contacts.utils.DisplayUtils;
@@ -24,6 +25,8 @@ import java.util.List;
 
 public class IndexSideBar extends View {
 
+    private static final boolean DEBUG = false;
+
     private static String[] mLetterIndexArray = {
             "A", "B", "C", "D", "E", "F", "G", "H", "I",
             "J", "K", "L", "M", "N", "O", "P", "Q", "R",
@@ -35,8 +38,8 @@ public class IndexSideBar extends View {
     private Paint mPaint;
     private Rect mTextBounds;
 
-//    private int width;
-//    private int height;
+    private int mViewWidth;     // IndexSideBar width
+    private int mViewHeight;    // IndexSideBar height
 
 
     public IndexSideBar(Context context) {
@@ -59,17 +62,23 @@ public class IndexSideBar extends View {
         setBackgroundColor(Color.alpha(0));
     }
 
-//    @Override
-//    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-//        width = w;
-//        height = h;
-//    }
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        mViewWidth = w;
+        mViewHeight = h;
+        if (DEBUG) {    // 72, 1581
+            Toast.makeText(getContext(), "IndexSideBar: onSizeChanged()\n" + w + ", " + h, Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        int cellWidth = getWidth();
+        if (DEBUG) {    // 72, 1581
+            Toast.makeText(getContext(), "IndexSideBar: onDraw()\n" + getWidth() + ", " + getHeight(), Toast.LENGTH_SHORT).show();
+        }
+
         int size = mLetterIndexList.size();
-        float cellHeight = getHeight() * 1.0f / size;
+        float cellHeight = mViewHeight * 1.0f / size;
 
         for (int index = 0; index < size; index++) {
             mPaint.setColor(Color.BLACK);       // black
@@ -78,7 +87,7 @@ public class IndexSideBar extends View {
             }
             String letter = mLetterIndexList.get(index);
 
-            float xPos = (cellWidth - mPaint.measureText(letter)) / 2;
+            float xPos = (mViewWidth - mPaint.measureText(letter)) / 2;
 
             mPaint.getTextBounds(letter, 0, letter.length(), mTextBounds);
             int textHeight = mTextBounds.height();
@@ -94,10 +103,9 @@ public class IndexSideBar extends View {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         float y = event.getY();
-        int height = getHeight();
         int size = mLetterIndexList.size();
         int oldLetterIndex = curLetterIndex;
-        int tmpLetterIndex = (int) (y / height * size);
+        int tmpLetterIndex = (int) (y / mViewHeight * size);
 
         if (event.getAction() == MotionEvent.ACTION_UP) {
             setBackgroundColor(Color.alpha(0));     // reset

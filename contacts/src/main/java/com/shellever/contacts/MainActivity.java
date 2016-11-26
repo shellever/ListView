@@ -44,6 +44,7 @@ public class MainActivity extends Activity {
     }
 
     private void initEvents() {
+        // 设置联系人列表的点击事件监听
         mContactsLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -52,6 +53,7 @@ public class MainActivity extends Activity {
             }
         });
 
+        // 设置侧边栏的触摸事件监听
         mIndexSideBar.setOnTouchLetterListener(new IndexSideBar.OnTouchLetterListener() {
             @Override
             public void onTouchingLetterListener(String letter) {
@@ -70,6 +72,7 @@ public class MainActivity extends Activity {
             }
         });
 
+        // 设置搜索框的文本内容改变事件监听
         mSearchEt.addTextChangedListener(new SearchEditText.MiddleTextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
